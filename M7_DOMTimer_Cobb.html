@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Timer - Avion Cobb</title>
+  </head>
+  <body>
+    <h1>DOM Timer</h1>
+    <input type="button" id="startTimer" value="Start Timer" /><br />
+    <input type="button" id="stopTimer" value="Stop Timer" /><br />
+    <input type="button" id="resetTimer" value="Reset Timer" /><br />
+    <script>
+      let timerElement = document.createElement("p");
+      timerElement.innerHTML = "Timer: 0";
+      document.body.appendChild(timerElement);
+
+      let timer;
+      let count = 0;
+
+      document
+        .getElementById("startTimer")
+        .addEventListener("click", function () {
+          if (timer) return;
+          timer = setInterval(function () {
+            count++;
+            timerElement.innerHTML = "Timer: " + count;
+          }, 1000);
+        });
+
+      document
+        .getElementById("stopTimer")
+        .addEventListener("click", function () {
+          clearInterval(timer);
+          timer = null;
+        });
+
+      document
+        .getElementById("resetTimer")
+        .addEventListener("click", function () {
+          clearInterval(timer);
+          timer = null;
+          count = 0;
+          timerElement.innerHTML = "Timer: 0";
+        });
+    </script>
+  </body>
+</html>

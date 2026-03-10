@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cobb Midterm Coding Exam</title>
+  </head>
+  <body>
+    <p>Avion Cobb</p>
+    <p>apcobb@my.waktech.edu</p>
+    <p>March 09, 2026</p>
+
+    <button id="Button1">Calculate Amortization Schedule</button>
+    <div id="output"></div>
+
+    <script>
+      const button1 = document.getElementById("Button1");
+      button1.addEventListener("click", () => {
+        let loanAmount = parseFloat(prompt("Enter the loan amount:"));
+        let termYears = parseInt(
+          prompt("Enter the term of the loan in years:"),
+        );
+
+        if (termYears != 15 && termYears != 30) {
+          alert("Loan term must be either 15 or 30 years.");
+          return;
+        } else {
+          const interestRate = 5.75 / 100;
+          const termMonths = termYears * 12;
+
+          const monthlyPayment = (
+            ((interestRate / 12) * loanAmount) /
+            (1 - Math.pow(1 + interestRate / 12, termYears * -12))
+          ).toFixed(2);
+
+          const totalInterest = (
+            monthlyPayment * termMonths -
+            loanAmount
+          ).toFixed(2);
+          const totalMortgageCost = (
+            loanAmount + parseFloat(totalInterest)
+          ).toFixed(2);
+
+          let output = "";
+          output += `<p>Mortgage Term: ${termYears} years</p>`;
+          output += `<p>Mortgage Interest Rate: 5.75%</p>`;
+          output += `<p>Mortgage Amount: $${loanAmount}</p>`;
+          output += `<p>Total Interest Amount: $${totalInterest}</p>`;
+          output += `<p>Total Mortgage Amount: $${totalMortgageCost}</p>`;
+
+          let totalBalance = parseFloat(totalMortgageCost);
+
+          for (let month = 1; month <= termMonths; month++) {
+            totalBalance = parseFloat(
+              (totalBalance - parseFloat(monthlyPayment)).toFixed(2),
+            );
+
+            if (totalBalance < 0) totalBalance = 0;
+
+            output += `<p>Month ${month}: Payment: $${monthlyPayment} | Remaining Balance: $${totalBalance.toFixed(2)}</p>`;
+
+            if (totalBalance <= 0) {
+              output += `<p>Ending...</p>`;
+              break;
+            }
+          }
+
+          document.getElementById("output").innerHTML = output;
+        }
+      });
+    </script>
+  </body>
+</html>
