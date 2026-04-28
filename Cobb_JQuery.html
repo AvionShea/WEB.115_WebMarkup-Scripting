@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>jQuery Example</h1>
+    <p id="demo">Hello, World!</p>
+    <button id="increaseText">Increase Text Size</button>
+    <button id="decreaseText">Decrease Text Size</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#demo").css("font-size", "16px");
+        $("button").css("cursor", "pointer");
+        $("#increaseText").click(function () {
+          let currentSize = parseInt($("#demo").css("font-size"));
+          $("#demo").css("font-size", currentSize + 2 + "px");
+        });
+        $("#decreaseText").click(function () {
+          let currentSize = parseInt($("#demo").css("font-size"));
+          $("#demo").css("font-size", currentSize - 2 + "px");
+        });
+      });
+    </script>
+  </body>
+</html>

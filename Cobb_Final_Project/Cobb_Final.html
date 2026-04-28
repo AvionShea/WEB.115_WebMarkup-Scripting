@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avion's Final Project</title>
+    <link rel="stylesheet" href="Cobb_FinalCss.css" />
+  </head>
+  <body>
+    <h1>Task Manager</h1>
+
+    <!-- Task Form -->
+    <div id="taskForm">
+      <label for="taskName">Task Name:</label>
+      <input type="text" id="taskName" placeholder="Enter task name" />
+
+      <label for="taskPriority">Priority:</label>
+      <select id="taskPriority">
+        <option value="High">High</option>
+        <option value="Medium" selected>Medium</option>
+        <option value="Low">Low</option>
+      </select>
+
+      <div style="margin-top: 12px">
+        <label>
+          <input type="checkbox" id="taskImportant" /> Mark as Important
+        </label>
+      </div>
+
+      <button onclick="addTask()">Add Task</button>
+    </div>
+
+    <!-- Tasks show up here -->
+    <div id="taskmanager"></div>
+    <script src="Cobb_FinalJS.js"></script>
+  </body>
+</html>
