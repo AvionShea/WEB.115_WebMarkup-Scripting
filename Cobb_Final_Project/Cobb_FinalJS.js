@@ -94,8 +94,8 @@ function renderTasks() {
         html += `<div class='task-card' id='task-${task.id}'>`;
         html += `<p><strong>${task.name}</strong></p>`;
         html += `<p>Priority: ${task.priority}</p>`;
-        html += `<p>Important: ${task.isImportant}</p>`;
-        html += `<p>Completed: ${task.isCompleted}</p>`;
+        html += `<p>Important: ${task.isImportant ? "Yes" : "No"}</p>`;
+        html += `<p>Completed: ${task.isCompleted ? "Yes" : "No"}</p>`;
         html += `<p>Date Added: ${task.date}</p>`;
         html += "<input type='checkbox' " + (task.isCompleted ? "checked" : "") + " onchange='toggleComplete(" + task.id + ")' /> Mark Complete";
         html += "<br><button onclick='deleteTask(" + task.id + ")'>Delete</button>";
